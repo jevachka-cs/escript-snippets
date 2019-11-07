@@ -1,0 +1,128 @@
+{
+    "Base Code Template": {
+        "prefix": "@bct",
+        "body": [
+            "// Exceptions",
+            "var sClassName:chars = this.Name();",
+            "var sThisName:chars = \"${1:methodName}\";",
+            "var sErrorMsg:chars = \"\";",
+            "",
+            "try",
+            "{",
+            "\t${2:}",
+            "}",
+            "catch(e)",
+            "{",
+            "\tsErrorMsg += e + \"\\n\\r\" + \"at \" + sThisName + \" (\" + sClassName + \")\";",
+            "}",
+            "finally",
+            "{",
+            "\t",
+            "}"
+        ],
+        "description": "Base code template for siebel server script"
+    },
+    "Buscomp Query": {
+        "prefix": "@bcq",
+        "body": [
+            "with(${1:bc})",
+            "{",
+            "\tSetViewMode(${2:3});",
+            "\tClearToQuery();",
+            "\tSetSearchExpr($3);",
+            "\tExecuteQuery(${4:ForwardOnly});",
+            "\tif(FirstRecord())",
+            "\t{",
+            "\t\t$5",
+            "\t}",
+            "}"
+        ],
+        "description": "Standard BusComp query block"
+    },
+    "BusComp Query with while loop": {
+        "prefix": "@bcqwhile",
+        "body": [
+            "var ${1:bRecord}:bool = false;",
+            "with(${2:bc})",
+            "{",
+            "\tSetViewMode(${3:3});",
+            "\tClearToQuery();",
+            "\tSetSearchExpr($4);",
+            "\tExecuteQuery(${5:ForwardOnly});",
+            "\t${1:bRecord} = FirstRecord()",
+            "\twhile(bRecord)",
+            "\t{",
+            "\t\t$6",
+            "\t\t${1:bRecord} = NextRecord();",
+            "\t}",
+            "}"
+        ],
+        "description": "Standard BusComp query block with while loop"
+    },
+    "New BusObject": {
+        "prefix": "@nbo",
+        "body": "var ${1:bo}:BusObject;",
+        "description": "New BusObject"
+    },
+    "New BusComp": {
+        "prefix": "@nbc",
+        "body": "var ${1:bc}:BusComp;",
+        "description": "New BusComp"
+    },
+    "New BusObject + BusComp": {
+        "prefix": "@nbobc",
+        "body": [
+            "var ${1:bo}:BusObject;",
+            "var ${2:bc}:BusComp;"
+        ],
+        "description": "New BusObject and BusComp"
+    },
+    "BusObject Assignment": {
+        "prefix": "@boa",
+        "body": "${1:bo} = TheApplication().GetBusObject(\"${3:Name}\");",
+        "description": "Assign BusObject"
+    },
+    "BusComp Assignment": {
+        "prefix": "@bca",
+        "body": "${1:bc} = ${2:bo}.GetBusComp(\"${3:Name}\");",
+        "description": "Assign BusComp"
+    },
+    "BusObject  + BusComp Assignment": {
+        "prefix": "@bobca",
+        "body": [
+            "${1:bo} = TheApplication().GetBusObject(\"${2:Name}\");",
+            "${3:bc} = ${1:bo}.GetBusComp(\"${4:Name}\");",
+        ],
+        "description": "BusObject & BusComp Assignment"
+    },
+    "ActivateField": {
+        "prefix": "@af",
+        "body": "ActivateField(\"${1:Name}\");",
+        "description": "ActivateField()"
+    },
+    "SetFieldValue": {
+        "prefix": "@sfv",
+        "body": "SetFieldValue(\"${1:Name}\", \"${2:Value}\");",
+        "description": "SetFieldValue()"
+    },
+    "GetFieldValue": {
+        "prefix": "@gfv",
+        "body": "GetFieldValue(\"${1:Name}\");",
+        "description": "GetFieldValue()"
+    },
+    "New PropertySet": {
+        "prefix": "@nps",
+        "body": "var ${1:psNew}:PropertySet = TheApplication().NewPropertySet();",
+        "description": "New Property Set"
+    },
+    "New Service": {
+        "prefix": "@nsrv",
+        "body": "var ${1:bs}:Service = TheApplication().GetService(\"${2:Name}\");",
+        "description": "New Service"
+    },
+    "LookupValue": {
+        "prefix": "@luv",
+        "body": "TheApplication().InvokeMethod(\"LookupValue\", \"${1:LOV}\", \"${2:LIC}\");",
+        "description": "LookupValue"
+    },
+}

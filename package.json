@@ -1,0 +1,20 @@
+{
+    "name": "eScript-snippets",
+    "displayName": "eScript-snippets",
+    "description": "Siebel eScript code snippets",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.39.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "javascript",
+                "path": "./snippets/snippets.json"
+            }
+        ]
+    }
+}
